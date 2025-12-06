@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+/* Dark mode styles */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f9fafb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+}
+
+:root.dark,
+.dark {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+}
+
+/* Force dark mode backgrounds */
+.dark body {
+  background-color: #111827 !important;
+}
+
+.dark header {
+  background-color: #111827 !important;
+  border-color: #374151 !important;
+}
+
+/* Dark mode utilities */
+@supports (color: light-dark(white, black)) {
+  * {
+    color-scheme: light dark;
+  }
+}
