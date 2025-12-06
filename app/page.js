@@ -17,12 +17,14 @@ export default function Home() {
   const handleFileUpload = async (file) => {
     setLoading(true);
     setError(null);
-    
+
     const formData = new FormData();
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/check', {
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://plagiarism-checker-api.onrender.com';
+
+      const response = await fetch(`${API_URL}/check`, {
         method: 'POST',
         body: formData,
       });
@@ -48,24 +50,24 @@ export default function Home() {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen transition-colors duration-300"
       style={{
-        background: isDark 
+        background: isDark
           ? 'linear-gradient(to bottom right, #111827, #1f2937, #111827)'
           : 'linear-gradient(to bottom right, #eff6ff, #ffffff, #faf5ff)'
       }}
     >
       <Header />
-      
+
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {!results ? (
           <div className="max-w-4xl mx-auto">
             <Hero />
             <FileUpload onFileUpload={handleFileUpload} loading={loading} />
-            
+
             {error && (
-              <div 
+              <div
                 className="mt-6 border-2 rounded-xl p-4 transition-colors"
                 style={{
                   backgroundColor: isDark ? 'rgba(239, 68, 68, 0.1)' : '#fef2f2',
