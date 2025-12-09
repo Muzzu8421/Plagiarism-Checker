@@ -15,7 +15,7 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   // 🔥 UPDATE THIS LINE WITH YOUR HUGGING FACE URL
-  const API_URL = 'https://Azar8421-plagiarism-checker.hf.space';
+  const API_URL = 'http://127.0.0.1:8000';
 
   const handleFileUpload = async (file) => {
     setLoading(true);
